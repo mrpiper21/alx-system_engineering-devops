@@ -1,2 +1,4 @@
 #!/bin/bash
-dvsd
+awk -F"\t" '{print $1}' logfile.txt > parsed_log.txt
+sort parsed_log.txt | uniq -c | sort -n -r > parsed_log_sorted.txt
+head -11 parsed_log_sorted.txt | awk '{print $2,$1}'
